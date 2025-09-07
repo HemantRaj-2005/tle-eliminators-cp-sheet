@@ -5,9 +5,30 @@ using namespace std;
 
 void solve(){
     ll n; cin >> n;
-    vector<ll> a(n);
-    for(ll i=0;i<n;i++) cin >> a[i];
-    // your logic here
+    if(n%2 == 1 || n < 4){
+        cout << -1 << endl;
+        return;
+    }
+
+    ll maxBus = 0;
+    ll temp = n/2;
+    if(temp%2 == 1){
+        maxBus++;
+        temp -= 3;
+    }
+    maxBus += temp/2;
+
+    ll minBus = 0;
+    temp = n/2;
+    if(temp%3 == 2){
+        temp -= 2;
+        minBus++;
+    }if(temp%3 == 1){
+        temp -= 4;
+        minBus += 2;
+    }
+    minBus += temp/3;
+    cout << minBus << " " << maxBus << endl;
 }
 
 int main(){
